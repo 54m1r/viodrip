@@ -1,0 +1,38 @@
+//
+// vio Theme
+// --------------------------------------------------
+
+// Include base files
+@import 'base';
+
+// Generate color theme
+.theme-vio {
+  @include color-theme($theme-vio-primary,
+          $theme-vio-light,
+          $theme-vio-lighter,
+          $theme-vio-dark,
+          $theme-vio-darker,
+          $theme-vio-body-bg,
+          $theme-vio-body-bg-dark,
+          $theme-vio-body-bg-light,
+          $theme-vio-body-color,
+          $theme-vio-body-color-dark,
+          $theme-vio-body-color-light,
+          $theme-vio-link-color,
+          $theme-vio-link-hover-color,
+          $theme-vio-headings-color,
+          $theme-vio-input-btn-focus-color,
+          $theme-vio-input-btn-focus-box-shadow,
+          $theme-vio-input-bg,
+          $theme-vio-input-color,
+          $theme-vio-input-border-color,
+          $theme-vio-input-focus-bg,
+          $theme-vio-input-focus-color,
+          $theme-vio-input-focus-border-color,
+          $theme-vio-header-bg,
+          $theme-vio-header-dark-bg,
+          $theme-vio-sidebar-bg,
+          $theme-vio-sidebar-dark-bg,
+          $theme-vio-side-overlay-bg,
+          $theme-vio-btn-alt-primary-bg);
+}

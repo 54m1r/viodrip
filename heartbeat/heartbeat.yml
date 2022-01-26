@@ -1,0 +1,16 @@
+heartbeat.monitors:
+  - type: tcp
+    name: MySQL
+    enabled: true
+    schedule: '@every 5s'
+    hosts: [ "tcp://db:3306" ]
+
+
+monitoring.enabled: true
+
+
+output.elasticsearch:
+  hosts: [ "elasticsearch:9200" ]
+
+
+logging.to_files: false

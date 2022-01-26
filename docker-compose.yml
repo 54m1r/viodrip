@@ -1,0 +1,134 @@
+version: "3"
+services:
+  elasticsearch:
+    image: elasticsearch:7.7.0
+    container_name: elasticsearch
+    hostname: elasticsearch
+    volumes:
+      #Mount the Heartbeat configuration so users can make edits.
+      - .\elasticsearch:/usr/share/elasticsearch/data
+    environment:
+      - "discovery.type=single-node"
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - elknetwork
+    healthcheck:
+      interval: 20s
+      retries: 10
+      test: curl -s http://localhost:9200/_cluster/health | grep -vq '"status":"red"'
+  kibana:
+    image: kibana:7.7.0
+    container_name: kibana
+    hostname: kibana
+    ports:
+      - 5601:5601
+    links:
+      - elasticsearch:elasticsearch
+    depends_on:
+      - elasticsearch
+    networks:
+      - elknetwork
+    healthcheck:
+      interval: 10s
+      retries: 20
+      test: curl --write-out 'HTTP %{http_code}' --fail --silent --output /dev/null http://localhost:5601/api/status
+  logstash:
+    image: logstash:7.7.0
+    container_name: logstash
+    hostname: logstash
+    ports:
+      - 9600:9600
+      - 8089:8089
+    volumes:
+      - .\logstash:/usr/share/logstash/pipeline/
+    links:
+      - elasticsearch:elasticsearch
+    depends_on:
+      - elasticsearch
+    networks:
+      - elknetwork
+  apm-server:
+    image: docker.elastic.co/apm/apm-server:7.7.0
+    container_name: apm-server
+    hostname: apm-server
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      kibana:
+        condition: service_healthy
+    cap_add: [ "CHOWN", "DAC_OVERRIDE", "SETGID", "SETUID" ]
+    cap_drop: [ "ALL" ]
+    ports:
+      - 8200:8200
+    networks:
+      - elknetwork
+    command: >
+      apm-server -e
+        -E apm-server.rum.enabled=true
+        -E setup.kibana.host=kibana:5601
+        -E setup.template.settings.index.number_of_replicas=0
+        -E apm-server.kibana.enabled=true
+        -E apm-server.kibana.host=kibana:5601
+        -E output.elasticsearch.hosts=["elasticsearch:9200"]
+    healthcheck:
+      interval: 10s
+      retries: 12
+      test: curl --write-out 'HTTP %{http_code}' --fail --silent --output /dev/null http://localhost:8200/
+  heartbeat:
+    container_name: heartbeat
+    hostname: heartbeat
+    image: docker.elastic.co/beats/heartbeat:7.7.0
+    volumes:
+      #Mount the Heartbeat configuration so users can make edits.
+      - .\heartbeat\heartbeat.yml:/usr/share/heartbeat/heartbeat.yml
+    depends_on:
+      elasticsearch: { condition: service_healthy }
+    command: heartbeat -e -strict.perms=false
+    networks:
+      - elknetwork
+    restart: on-failure
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    links:
+      - elasticsearch:elasticsearch
+      - logstash:logstash
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      kibana:
+        condition: service_healthy
+      apm-server:
+        condition: service_healthy
+    ports:
+      - 1337:1337
+    networks:
+      - elknetwork
+
+  db:
+    image: mysql:5.7
+    container_name: db
+    volumes:
+      - ./docker/db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - elknetwork
+    ports:
+      - '3306:3306'
+
+networks:
+  elknetwork:
+    driver: bridge
