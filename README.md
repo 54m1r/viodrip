@@ -38,13 +38,7 @@
   - [Installation](#installation)
 - [Usage](#usage)
 - [Roadmap](#roadmap)
-- [Support](#support)
-- [Project assistance](#project-assistance)
-- [Contributing](#contributing)
 - [Authors & contributors](#authors--contributors)
-- [Security](#security)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
 
 </details>
 
@@ -66,10 +60,13 @@
 > **[?]**
 > Please provide your screenshots here.
 
-|                               Home Page                               |                               Login Page                               |
+|                              Crash                              |                              Roulette                               |
 | :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
 | <img src="docs/images/screenshot.png" title="Home Page" width="100%"> | <img src="docs/images/screenshot.png" title="Login Page" width="100%"> |
-
+  
+|                               Sport bets                               |                               Statistics                               |
+| :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
+| <img src="docs/images/screenshot.png" title="Home Page" width="100%"> | <img src="docs/images/screenshot.png" title="Login Page" width="100%"> |
 </details>
 
 ### Built With
@@ -103,54 +100,8 @@ See the [open issues](https://github.com/54m1r/viodrip/issues) for a list of pro
 - [Top Bugs](https://github.com/54m1r/viodrip/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
 - [Newest Bugs](https://github.com/54m1r/viodrip/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 
-## Support
-
-> **[?]**
-> Provide additional ways to contact the project maintainer/maintainers.
-
-Reach out to the maintainer at one of the following places:
-
-- [GitHub issues](https://github.com/54m1r/viodrip/issues/new?assignees=&labels=question&template=04_SUPPORT_QUESTION.md&title=support%3A+)
-- Contact options listed on [this GitHub profile](https://github.com/54m1r)
-
-## Project assistance
-
-If you want to say **thank you** or/and support active development of viodrip:
-
-- Add a [GitHub Star](https://github.com/54m1r/viodrip) to the project.
-- Tweet about the viodrip.
-- Write interesting articles about the project on [Dev.to](https://dev.to/), [Medium](https://medium.com/) or your personal blog.
-
-Together, we can make viodrip **better**!
-
-## Contributing
-
-First off, thanks for taking the time to contribute! Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make will benefit everybody else and are **greatly appreciated**.
-
-
-Please read [our contribution guidelines](docs/CONTRIBUTING.md), and thank you for being involved!
-
 ## Authors & contributors
 
 The original setup of this repository is by [54m1r](https://github.com/54m1r).
 
 For a full list of all authors and contributors, see [the contributors page](https://github.com/54m1r/viodrip/contributors).
-
-## Security
-
-viodrip follows good practices of security, but 100% security cannot be assured.
-viodrip is provided **"as is"** without any **warranty**. Use at your own risk.
-
-_For more information and to report security issues, please refer to our [security documentation](docs/SECURITY.md)._
-
-## License
-
-This project is licensed under the **MIT license**.
-
-See [LICENSE](LICENSE) for more information.
-
-## Acknowledgements
-
-> **[?]**
-> If your work was funded by any organization or institution, acknowledge their support here.
-> In addition, if your work relies on other software libraries, or was inspired by looking at other work, it is appropriate to acknowledge this intellectual debt too.
