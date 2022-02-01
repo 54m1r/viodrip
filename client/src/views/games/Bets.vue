@@ -33,7 +33,7 @@
           <b-row class="row-deck">
             <!-- Latest Customers -->
             <b-col xl="12">
-              <base-block :title="selectedLeague.name ? selectedLeague.name : 'Highlights'" header-bg content-full>
+              <base-block :title="selectedLeague.name ? selectedLeague.name : 'Nächsten Spiele'" header-bg content-full>
                 <b-table-simple responsive hover borderless class="table-vcenter font-size-sm mb-0">
                   <b-tbody>
                     <b-tr v-for="match in filteredMatches" :key="match.id">
@@ -41,19 +41,23 @@
                          style="width: 2%; font-size: 18px" class="text-black-50">
                         <b-badge variant="primary">● Live</b-badge>
                       </b-td>
+                      <b-td v-else
+                         style="width: 2%; font-size: 18px" class="text-black-50">
+                         
+                      </b-td>
                       <b-td style="width: 7%; font-size: 12px" class="text-muted">
                         <div style="float: left">
                           {{ moment.unix(match.start_date).local().calendar() }}<br>
                           {{ moment.unix(match.start_date).local().format('HH:mm') }} Uhr
                         </div>
                       </b-td>                        
-                      <b-td style="width: 52%" class="text-black-50">
+                      <b-td style="width: 31%" class="text-black-50">
                           <strong>
                             {{ match.team_0 }}<br>
                             {{ match.team_1 }}
                             </strong>
                       </b-td>
-                      <b-td style="width: 13%; padding-right: 2px;">
+                      <b-td style="width: 20%; padding-right: 2px;">
                         <b-button @click="bet(match, 0)" class="w-100" size="sm"
                                   :disabled="moment.duration(moment.unix(match.start_date).diff(moment())).asHours() < 0" 
                                   :variant="isBetActive(match.id, 0) ? 'secondary' : 'outline-secondary'">
@@ -61,7 +65,7 @@
                           {{ match.odds_0 }}
                         </b-button>
                       </b-td>
-                      <b-td style="width: 13%; padding-right: 2px; padding-left: 2px">
+                      <b-td style="width: 20%; padding-right: 2px; padding-left: 2px">
                         <b-button @click="bet(match, 2)" class="w-100" size="sm"
                                   :disabled="moment.duration(moment.unix(match.start_date).diff(moment())).asHours() < 0" 
                                   :variant="isBetActive(match.id, 2) ? 'secondary' : 'outline-secondary'"><span
@@ -69,7 +73,7 @@
                           match.odds_2 }}
                         </b-button>
                       </b-td>
-                      <b-td style="width: 13%; padding-left: 2px">
+                      <b-td style="width: 20%; padding-left: 2px">
                         <b-button @click="bet(match, 1)" cli class="w-100" size="sm"
                                   :disabled="moment.duration(moment.unix(match.start_date).diff(moment())).asHours() < 0" 
                                   :variant="isBetActive(match.id, 1) ? 'secondary' : 'outline-secondary'"><span
@@ -196,6 +200,7 @@
 <script>
   import axios from 'axios';
   import {mapActions, mapGetters} from "vuex";
+  import moment from 'moment';
 
   export default {
     components: {},
@@ -229,7 +234,17 @@
         return this.sports.filter(sport => sport.leagues.length !== 0)
       },
       filteredMatches: function () {
-        return this.matches.filter(match => match.league_id === this.selectedLeague.id ? match.league_id === this.selectedLeague.id : match.highlight)
+        //wen liga ausgewählt
+        if(this.selectedLeague.id) {
+          return this.matches.filter(match => match.league_id === this.selectedLeague.id ? match.league_id === this.selectedLeague.id : match.highlight)
+        } else {
+          let todaysMatches =  this.matches.filter(match => 
+            moment.unix(match.start_date).local().format('DDD-YYYY') === moment().local().format('DDD-YYYY'))
+          
+          let nextMatches = this.matches.slice().sort((a,b) => a.start_date - b.start_date);
+
+          return todaysMatches.concat(nextMatches.slice(todaysMatches.length, 10));
+        }
       }
     },
     watch: {

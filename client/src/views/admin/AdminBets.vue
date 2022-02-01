@@ -218,7 +218,7 @@
                 </b-tr>
               </b-thead>
               <b-tbody>
-                <b-tr v-for="betting_slip in betting_slips" :key="betting_slip.id">
+                <b-tr v-for="betting_slip in latestBettingSlips" :key="betting_slip.id">
                   <b-td>
                     <a class="font-w600" href="javascript:void(0)">#{{ betting_slip.id }}</a>
                   </b-td>
@@ -257,117 +257,13 @@ import axios from 'axios';
 export default {
   data () {
     return {
-      latestCustomers: [
-        {
-          id: 1521,
-          avatar: 'avatar11',
-          name: 'Adam McCoy',
-          orders: 5
-        },
-        {
-          id: 1520,
-          avatar: 'avatar1',
-          name: 'Betty Kelley',
-          orders: 7
-        },
-        {
-          id: 1519,
-          avatar: 'avatar5',
-          name: 'Jesse Fisher',
-          orders: 12
-        },
-        {
-          id: 1518,
-          avatar: 'avatar12',
-          name: 'Ryan Flores',
-          orders: 19
-        },
-        {
-          id: 1517,
-          avatar: 'avatar3',
-          name: 'Alice Moore',
-          orders: 2
-        },
-        {
-          id: 1516,
-          avatar: 'avatar13',
-          name: 'Scott Young',
-          orders: 5
-        },
-        {
-          id: 1515,
-          avatar: 'avatar14',
-          name: 'Ralph Murray',
-          orders: 9
-        }
-      ],
-      latestOrders: [
-        {
-          id: 7835,
-          date: 'today',
-          state: 'Pending..',
-          stateVariant: 'warning',
-          total: '$999,99'
-        },
-        {
-          id: 7834,
-          date: 'today',
-          state: 'Pending..',
-          stateVariant: 'warning',
-          total: '$2.299,00'
-        },
-        {
-          id: 7833,
-          date: 'today',
-          state: 'Success',
-          stateVariant: 'success',
-          total: '$1200,00'
-        },
-        {
-          id: 7832,
-          date: 'today',
-          state: 'Cancelled',
-          stateVariant: 'danger',
-          total: '$399,00'
-        },
-        {
-          id: 7831,
-          date: 'today',
-          state: 'Success',
-          stateVariant: 'success',
-          total: '$349,00'
-        },
-        {
-          id: 7830,
-          date: 'today',
-          state: 'Success',
-          stateVariant: 'success',
-          total: '$999,00'
-        },
-        {
-          id: 7829,
-          date: 'today',
-          state: 'Success',
-          stateVariant: 'success',
-          total: '$39,99'
-        },
-        {
-          id: 7828,
-          date: 'today',
-          state: 'Success',
-          stateVariant: 'success',
-          total: '$499,00'
-        },
-        {
-          id: 7827,
-          date: 'today',
-          state: 'Success',
-          stateVariant: 'success',
-          total: '$325,00'
-        }
-      ],
       matches: [],
       betting_slips: [],
+    }
+  },
+  computed: {
+    latestBettingSlips: function () {
+      return this.betting_slips.sort((a,b) => a.id + b.id);
     }
   },
   mounted() {

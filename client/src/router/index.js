@@ -23,7 +23,7 @@ const Dashboard = () => import(/* webpackChunkName: "pages-dashboard", webpackPr
 // Games
 const GameBets = () => import("@/views/games/Bets.vue");
 const GameRoulette = () => import("@/views/games/Roulette.vue");
-//const GameCrash = () => import("@/views/games/Crash.vue");
+const GameCrash = () => import("@/views/games/Crash.vue");
 
 // Administration
 const AdminBets = () => import("@/views/admin/AdminBets")
@@ -86,11 +86,11 @@ let router = new Router({
           name: 'Sportwetten',
           component: GameBets,
         },
-        /*{
+        {
           path: 'crash',
           name: 'Crash',
           component: GameCrash
-        }, */
+        },
         {
           path: 'roulette',
           name: 'Roulette',
