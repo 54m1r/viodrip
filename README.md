@@ -46,51 +46,42 @@
 
 ## About
 
-> **[?]**
-> Provide general information about your project here.
-> What problem does it (intend to) solve?
-> What is the purpose of your project?
-> Why did you undertake it?
-> You don't have to answer all the questions -- just the ones relevant to your project.
+Fortuna is a provably fair virtual casino with sports betting, roulette and crash for online players that is in the final stages of development. 
 
 <details>
 <summary>Screenshots</summary>
 <br>
 
-> **[?]**
-> Please provide your screenshots here.
 
-|                              Crash                              |                              Roulette                               |
+|                              Adminpanel                              |                              Roulette                               |
 | :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <img src="docs/images/screenshot.png" title="Home Page" width="100%"> | <img src="docs/images/screenshot.png" title="Login Page" width="100%"> |
+| <img src="https://i.imgur.com/YC8GJW0.png" title="Home Page" width="100%"> | <img src="https://i.imgur.com/4qQdGfT.png" title="Login Page" width="100%"> |
   
-|                               Sport bets                               |                               Statistics                               |
+|                               Sport bets                               |                                                              |
 | :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <img src="docs/images/screenshot.png" title="Home Page" width="100%"> | <img src="docs/images/screenshot.png" title="Login Page" width="100%"> |
+| <img src="https://i.imgur.com/CRHvN86.png" title="Home Page" width="100%"> | <img src="" title="Login Page" width="100%"> |
 </details>
 
 ### Built With
-
-> **[?]**
-> Please provide the technologies that are used in the project.
+ELK Stack<br>
+NodeJS<br>
+MySQL<br>
+VueJS<br>
+ExpressJS<br>
 
 ## Getting Started
 
 ### Prerequisites
 
-> **[?]**
-> What are the project requirements/dependencies?
+Docker
 
 ### Installation
 
-> **[?]**
-> Describe how to install and get started with the project.
+docker-compose build
 
 ## Usage
 
-> **[?]**
-> How does one go about using it?
-> Provide various use cases and code examples here.
+docker-compose up
 
 ## Roadmap
 
