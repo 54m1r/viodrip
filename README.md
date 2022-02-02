@@ -53,13 +53,13 @@ Fortuna is a provably fair virtual casino with sports betting, roulette and cras
 <br>
 
 
-|                              Crash                              |                              Roulette                               |
+|                              Adminpanel                              |                              Roulette                               |
 | :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <img src="docs/images/screenshot.png" title="Home Page" width="100%"> | <img src="docs/images/screenshot.png" title="Login Page" width="100%"> |
+| <img src="https://i.imgur.com/YC8GJW0.png" title="Home Page" width="100%"> | <img src="https://i.imgur.com/4qQdGfT.png" title="Login Page" width="100%"> |
   
-|                               Sport bets                               |                               Statistics                               |
+|                               Sport bets                               |                                                              |
 | :-------------------------------------------------------------------: | :--------------------------------------------------------------------: |
-| <img src="docs/images/screenshot.png" title="Home Page" width="100%"> | <img src="docs/images/screenshot.png" title="Login Page" width="100%"> |
+| <img src="https://i.imgur.com/CRHvN86.png" title="Home Page" width="100%"> | <img src="" title="Login Page" width="100%"> |
 </details>
 
 ### Built With
