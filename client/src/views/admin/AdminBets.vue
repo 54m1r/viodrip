@@ -8,11 +8,6 @@
             <h1 class="font-w600 text-white mb-0">Administration</h1>
             <h2 class="h4 font-w400 text-white-75 mb-0">Willkommen Chef!</h2>
           </div>
-          <div class="mt-3 mt-sm-0 ml-sm-3">
-            <b-button variant="primary" class="px-4 py-2" href="javascript:void(0)" v-click-ripple>
-              <i class="fa fa-plus mr-1"></i> New Project
-            </b-button>
-          </div>
         </div>
       </div>
     </base-background>
@@ -169,7 +164,7 @@
                     <a class="font-w600" href="javascript:void(0)">#{{ match.id }}</a>
                   </b-td>
                  <b-td class="text-black-50">
-                     <a class="link-fx" href="javascript:void(0)"><b>{{ match.team_0 }} - {{ match.team_1 }}</b></a>,<br> 
+                     <a class="link-fx" href="javascript:void(0)"><b>{{ match.team_0 }} - {{ match.team_1 }}</b></a>,<br>
                      <small>{{ moment.unix(match.start_date).local().calendar() }} {{ moment.unix(match.start_date).local().format('HH:mm') }} Uhr</small>
                     </b-td>
                    <b-td class="d-none d-sm-table-cell">
@@ -226,7 +221,7 @@
                     <a class="link-fx font-w600" href="javascript:void(0)">{{ betting_slip.user.username }}</a>
                   </b-td>
                  <b-td class="text-black-50">
-                     <a class="link-fx" href="javascript:void(0)"><b>{{ betting_slip.match.team_0 }} - {{ betting_slip.match.team_1 }}</b></a>,<br> 
+                     <a class="link-fx" href="javascript:void(0)"><b>{{ betting_slip.match.team_0 }} - {{ betting_slip.match.team_1 }}</b></a>,<br>
                      <small>{{ moment.unix(betting_slip.match.start_date).local().calendar() }} {{ moment.unix(betting_slip.match.start_date).local().format('HH:mm') }} Uhr</small>
                     </b-td>
                    <b-td class="d-none d-sm-table-cell">
@@ -298,7 +293,7 @@ export default {
       },
   },
   created () {
-      
+
   }
 }
 </script>

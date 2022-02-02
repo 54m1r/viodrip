@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const sequelize = require('sequelize');
 
-const api_key = '6023eb23830184b2a7948e69b75a1fae';
+const api_key = '';
 
 const Match = db.match;
 const League = db.league;
